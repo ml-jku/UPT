@@ -19,7 +19,7 @@ the physics domain into a latent representation, the approximator propagates the
 and the decoder transforms the latent representation back to the physics domain.
 
 <p align="center">
-<img width="100%" alt="schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture1.svg">
+<img width="80%" alt="architecture1" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture1.svg">
 </p>
 
 
@@ -27,7 +27,7 @@ To enforce the responsibilities of each component, inverse encoding and decoding
 
 
 <p align="center">
-<img width="100%" alt="schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture2.svg">
+<img width="80%" alt="architecture2" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture2.svg">
 </p>
 
 
