@@ -1,4 +1,8 @@
+Code and instructions are coming soon.
+
+
 [[Project Page](https://ml-jku.github.io/UPT)]
+
 
 
 **U**niversal **P**hysics **T**ransformers (UPTs) are a novel learning paradigm that can model a wide range of 
@@ -6,22 +10,39 @@ spatio-temporal problems - both for Lagrangian and Eulerian discretization schem
 
 
 <p align="center">
-<img width="100%" alt="mimrefiner_schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/schematic.png">
+<img width="100%" alt="schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/schematic.png">
 </p>
+
+
+The architecture of UPT consists of an encoder, an approximator and a decoder. The encoder is responsible to encode
+the physics domain into a latent representation, the approximator propagates the latent representation forward in time
+and the decoder transforms the latent representation back to the physics domain.
+
+<p align="center">
+<img width="100%" alt="schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture1.svg">
+</p>
+
+
+To enforce the responsibilities of each component, inverse encoding and decoding tasks are added.
+
+
+<p align="center">
+<img width="100%" alt="schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture2.svg">
+</p>
+
 
 
 UPTs can model transient flow simulations (Eulerian discretization scheme) as indicated by test loss and rollout performance (measured via correlation time):
 
 <p align="center">
-<img width="48%" alt="maect_schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_testloss.svg">
-<img width="48%" alt="lowshot_vitl" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_corrtime.svg">
+<img width="48%" alt="cfd_scaling_testloss" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_testloss.svg">
+<img width="48%" alt="cfd_scaling_corrtime" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_corrtime.svg">
 </p>
 
 
 <p align="center">
-<img width="100%" alt="mimrefiner_schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_rollout.png">
+<img width="100%" alt="cfd_rollout" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_rollout.png">
 </p>
-
 
 
 UPTs can also model the flow-field of particle based simulations (Lagrangian discretization scheme):

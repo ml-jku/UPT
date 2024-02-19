@@ -12,6 +12,24 @@ spatio-temporal problems - both for Lagrangian and Eulerian discretization schem
 </p>
 
 
+The architecture of UPT consists of an encoder, an approximator and a decoder. The encoder is responsible to encode
+the physics domain into a latent representation, the approximator propagates the latent representation forward in time
+and the decoder transforms the latent representation back to the physics domain.
+
+<p align="center">
+<img width="100%" alt="schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture1.svg">
+</p>
+
+
+To enforce the responsibilities of each component, inverse encoding and decoding tasks are added.
+
+
+<p align="center">
+<img width="100%" alt="schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture2.svg">
+</p>
+
+
+
 UPTs can model transient flow simulations (Eulerian discretization scheme) as indicated by test loss and rollout performance (measured via correlation time):
 
 <p align="center">
