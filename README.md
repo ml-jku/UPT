@@ -13,8 +13,8 @@ spatio-temporal problems - both for Lagrangian and Eulerian discretization schem
 UPTs can model transient flow simulations (Eulerian discretization scheme) as indicated by test loss and rollout performance (measured via correlation time):
 
 <p align="center">
-<img width="50%" alt="maect_schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_testloss.svg">
-<img width="50%" alt="lowshot_vitl" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_corrtime.svg">
+<img width="48%" alt="maect_schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_testloss.svg">
+<img width="48%" alt="lowshot_vitl" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_corrtime.svg">
 </p>
 
 
