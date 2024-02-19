@@ -23,8 +23,10 @@ UPTs can model transient flow simulations (Eulerian discretization scheme) as in
 </p>
 
 
-and also the flow-field of particle based simulations (Lagrangian discretization scheme):
+
+UPTs can also model the flow-field of particle based simulations (Lagrangian discretization scheme):
 
 <p align="center">
-<img width="100%" alt="mimrefiner_schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/lagrangian_field.png">
+<img width="100%" alt="lagrangian_field" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/lagrangian_field.png">
 </p>
+Particles show the predictions from a trained GNN and the white arrows show the learned field of a UPT model evaluated on the positions of a regular grid.
