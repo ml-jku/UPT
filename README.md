@@ -1,53 +1,27 @@
 Code and instructions are coming soon.
 
 
-[[Project Page](https://ml-jku.github.io/UPT)]
+[[Project Page](https://ml-jku.github.io/UPT)] [[Paper (arxiv)](https://arxiv.org/abs/2402.12365)] [[BibTeX](https://github.com/ml-jku/UPT#citation)]
 
 
 
-**U**niversal **P**hysics **T**ransformers (UPTs) are a novel learning paradigm that can model a wide range of 
-spatio-temporal problems - both for Lagrangian and Eulerian discretization schemes.
+# Train your own models
 
+Instructions to setup the codebase on your own environment are provided in 
+[SETUP_CODE](https://github.com/ml-jku/MIM-Refiner/blob/main/SETUP_CODE.md), 
+[SETUP_DATA](https://github.com/ml-jku/MIM-Refiner/blob/main/SETUP_DATA.md).
 
-<p align="center">
-<img width="100%" alt="schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/schematic.png">
-</p>
+Configurations to train, evaluate or analyze models can be found [here](https://github.com/ml-jku/MIM-Refiner/tree/main/src/yamls).
 
+# Citation
 
-The architecture of UPT consists of an encoder, an approximator and a decoder. The encoder is responsible to encode
-the physics domain into a latent representation, the approximator propagates the latent representation forward in time
-and the decoder transforms the latent representation back to the physics domain.
+If you like our work, please consider giving it a star :star: and cite us
 
-<p align="center">
-<img width="80%" alt="architecture1" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture1.svg">
-</p>
-
-
-To enforce the responsibilities of each component, inverse encoding and decoding tasks are added.
-
-
-<p align="center">
-<img width="80%" alt="architecture2" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/architecture2.svg">
-</p>
-
-
-
-UPTs can model transient flow simulations (Eulerian discretization scheme) as indicated by test loss and rollout performance (measured via correlation time):
-
-<p align="center">
-<img width="48%" alt="cfd_scaling_testloss" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_testloss.svg">
-<img width="48%" alt="cfd_scaling_corrtime" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_scaling_corrtime.svg">
-</p>
-
-
-<p align="center">
-<img width="100%" alt="cfd_rollout" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_rollout.png">
-</p>
-
-
-UPTs can also model the flow-field of particle based simulations (Lagrangian discretization scheme):
-
-<p align="center">
-<img width="100%" alt="lagrangian_field" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/lagrangian_field.png">
-</p>
-Particles show the ground truth velocities of particles and the white arrows show the learned velocity field of a UPT model evaluated on the positions of a regular grid.
+```
+@article{alkin2024upt,
+      title={Universal Physics Transformers}, 
+      author={Benedikt Alkin and Andreas Fürst and Simon Schmid and Lukas Gruber and Markus Holzleitner and Johannes Brandstetter},
+      journal={arXiv preprint arXiv:2402.12365},
+      year={2024}
+}
+```
