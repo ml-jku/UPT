@@ -8,10 +8,10 @@ Code and instructions are coming soon.
 # Train your own models
 
 Instructions to setup the codebase on your own environment are provided in 
-[SETUP_CODE](https://github.com/ml-jku/MIM-Refiner/blob/main/SETUP_CODE.md), 
-[SETUP_DATA](https://github.com/ml-jku/MIM-Refiner/blob/main/SETUP_DATA.md).
+[SETUP_CODE](https://github.com/ml-jku/UPT/blob/main/SETUP_CODE.md), 
+[SETUP_DATA](https://github.com/ml-jku/UPT/blob/main/SETUP_DATA.md).
 
-Configurations to train, evaluate or analyze models can be found [here](https://github.com/ml-jku/MIM-Refiner/tree/main/src/yamls).
+Configurations to train models can be found [here](https://github.com/ml-jku/UPT/tree/main/src/yamls).
 
 # Citation
 
