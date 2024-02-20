@@ -48,4 +48,4 @@ UPTs can also model the flow-field of particle based simulations (Lagrangian dis
 <p align="center">
 <img width="100%" alt="lagrangian_field" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/lagrangian_field.png">
 </p>
-Particles show the predictions from a trained GNN and the white arrows show the learned field of a UPT model evaluated on the positions of a regular grid.
+Particles show the ground truth velocities of particles and the white arrows show the learned velocity field of a UPT model evaluated on the positions of a regular grid.

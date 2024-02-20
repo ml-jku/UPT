@@ -1,0 +1,45 @@
+debug:
+  hidden_dim: 16
+
+dim32:
+  hidden_dim: 32
+
+dim48:
+  hidden_dim: 48
+
+dim64:
+  hidden_dim: 64
+
+dim96:
+  hidden_dim: 96
+
+dim128:
+  hidden_dim: 128
+
+dim192:
+  hidden_dim: 192
+
+dim256:
+  hidden_dim: 256
+
+dim384:
+  hidden_dim: 384
+
+dim512:
+  hidden_dim: 512
+
+dim768:
+  hidden_dim: 768
+
+dim1024:
+  hidden_dim: 1024
+
+dim1280:
+  hidden_dim: 1280
+
+dim1536:
+  hidden_dim: 1536
+
+original:
+  hidden_dim: [ 448, 512, 256, 86 ]
+  pred_hidden_dim: 256

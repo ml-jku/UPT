@@ -1,0 +1,14 @@
+vars:
+  end_percent: ???
+  end_value: 1.0e-6
+
+schedule:
+  - schedule:
+      kind: linear_increasing_schedule
+      exclude_first: true
+      exclude_last: true
+    end_percent: ${vars.end_percent}
+  - schedule:
+      kind: cosine_decreasing_schedule
+      exclude_last: true
+      end_value: ${vars.end_value}

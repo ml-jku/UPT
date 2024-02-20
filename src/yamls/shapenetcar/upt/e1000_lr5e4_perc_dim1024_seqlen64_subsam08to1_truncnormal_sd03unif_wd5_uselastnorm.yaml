@@ -1,0 +1,70 @@
+wandb: cvsim
+name: snc-all-nosdf-e1000-subsam08to1-lr5e4-perconly-seqlen64-dim1024x12-wd5-sd03unif-uselastnorm
+stage_name: stage1
+vars:
+  lr: 5.0e-4
+  batch_size: 32
+  max_batch_size: 32
+  epochs: 1000
+
+  optim:
+    kind: adamw
+    lr: ${vars.lr}
+    weight_decay: 5.0
+    schedule:
+      template: ${yaml:schedules/wupcos_epoch}
+      template.vars.end_epoch: 50
+
+datasets:
+  train:
+    kind: shapenet_car
+    split: train
+    num_input_points_ratio: [ 0.8, 1.0 ]
+    collators:
+      - kind: rans_simformer_nognn_collator
+  test:
+    kind: shapenet_car
+    split: test
+    collators:
+      - kind: rans_simformer_nognn_collator
+
+model:
+  kind: rans_simformer_nognn_model
+  encoder:
+    kind: encoders.rans_perceiver
+    num_output_tokens: 64
+    kwargs: ${select:dim1024:${yaml:models/encoders/perceiver}}
+    optim: ${vars.optim}
+  latent:
+    kind: latent.transformer_model
+    init_weights: truncnormal
+    drop_path_rate: 0.3
+    drop_path_decay: false
+    kwargs: ${select:dim1024depth12:${yaml:models/latent/transformer}}
+    optim: ${vars.optim}
+  decoder:
+    kind: decoders.rans_perceiver
+    init_weights: truncnormal
+    use_last_norm: true
+    kwargs: ${select:dim1024:${yaml:models/decoders/perceiver}}
+    optim: ${vars.optim}
+
+trainer:
+  kind: rans_simformer_nognn_trainer
+  precision: bfloat16
+  backup_precision: float16
+  max_epochs: ${vars.epochs}
+  effective_batch_size: ${vars.batch_size}
+  max_batch_size: ${vars.max_batch_size}
+  loss_function:
+    kind: elementwise_loss
+    loss_function:
+      kind: mse_loss
+  log_every_n_epochs: 1
+  callbacks:
+    - kind: offline_loss_callback
+      every_n_epochs: 1
+      dataset_key: test
+    - kind: best_checkpoint_callback
+      every_n_epochs: 1
+      metric_key: loss/test/total

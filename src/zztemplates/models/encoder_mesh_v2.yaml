@@ -1,0 +1,39 @@
+debug:
+  gnn_dim: 4
+  gnn_pool_dim: 8
+  enc_dim: 16
+  num_attn_heads: 2
+  perc_num_attn_heads: 2
+  depth: 1
+
+gnn16_dim384_out768:
+  gnn_dim: 16
+  gnn_pool_dim: 192
+  enc_dim: 384
+  num_attn_heads: 3
+  perc_num_attn_heads: 12
+  depth: 12
+
+gnn64_dim384_out768:
+  gnn_dim: 64
+  gnn_pool_dim: 192
+  enc_dim: 384
+  num_attn_heads: 3
+  perc_num_attn_heads: 12
+  depth: 12
+
+gnn96_dim384_out768:
+  gnn_dim: 96
+  gnn_pool_dim: 192
+  enc_dim: 384
+  num_attn_heads: 3
+  perc_num_attn_heads: 12
+  depth: 12
+
+gnn128_dim384_out768:
+  gnn_dim: 128
+  gnn_pool_dim: 192
+  enc_dim: 384
+  num_attn_heads: 3
+  perc_num_attn_heads: 12
+  depth: 12

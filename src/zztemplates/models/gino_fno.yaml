@@ -1,0 +1,11 @@
+debug:
+  dim: 8
+
+base_dim64:
+  dim: 64
+
+base:
+  dim: 86
+
+large:
+  dim: 128

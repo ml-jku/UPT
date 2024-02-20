@@ -1,0 +1,72 @@
+debug:
+  dim: 16
+  num_attn_heads: 2
+  depth: 1
+
+nano:
+  dim: 64
+  num_attn_heads: 2
+  depth: 12
+
+micro:
+  dim: 128
+  num_attn_heads: 2
+  depth: 12
+
+# 5.5M
+tiny: # vit_tiny_patch16_224
+  dim: 192
+  num_attn_heads: 3
+  depth: 12
+
+# 21.5M
+small: # vit_small_patch16_224
+  dim: 384
+  num_attn_heads: 6
+  depth: 12
+
+# 85.6M
+base:
+  dim: 768
+  num_attn_heads: 12
+  depth: 12
+
+# 303M
+large:
+  dim: 1024
+  num_attn_heads: 16
+  depth: 24
+
+# 630M
+huge:
+  dim: 1280
+  num_attn_heads: 16
+  depth: 32
+
+# 1.1G
+giga_dinov2:
+  dim: 1536
+  num_attn_heads: 24
+  depth: 40
+
+# 1011M
+giga_small:
+  dim: 1408
+  num_attn_heads: 16
+  depth: 40
+  mlp_dim: 6144
+
+# 1843M
+giga_large:
+  dim: 1664
+  num_attn_heads: 16
+  depth: 48
+  mlp_dim: 8192
+
+# 3926M
+# https://arxiv.org/pdf/2209.06794
+enormous:
+  dim: 1792
+  num_attn_heads: 16
+  depth: 56
+  mlp_dim: 15360

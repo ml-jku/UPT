@@ -1,0 +1,139 @@
+wandb: cvsim
+name: 10ksims-t100-e100-lr1e4-8to24r5k32q8-grid64-unet8Mpdearena-fp32
+stage_name: stage1
+vars:
+  lr: 1.0e-4
+  batch_size: 1024
+  max_batch_size: 1024
+  epochs: 100
+  version: v3-10000sims
+  num_input_points: [ 8192, 24576 ]
+  num_query_points: 8192
+  grid_resolution: [ 64, 64 ]
+  radius_graph_r: 5.0
+  radius_graph_max_num_neighbors: 32
+  rollout_num_input_points: 16384
+  norm: mean0std1q25
+  clamp: 0
+  clamp_mode: log
+  max_num_timesteps: 100
+
+  optim:
+    kind: adamw
+    lr: ${vars.lr}
+    weight_decay: 1.0e-4
+    schedule:
+      template: ${yaml:schedules/wupcos_epoch}
+      template.vars.end_epoch: 10
+
+datasets:
+  train:
+    kind: cfd_dataset
+    version: ${vars.version}
+    split: train
+    num_input_timesteps: 2
+    grid_resolution: ${vars.grid_resolution}
+    num_input_points: ${vars.num_input_points}
+    num_query_points: ${vars.num_query_points}
+    num_query_points_mode: arbitrary
+    standardize_query_pos: true
+    norm: ${vars.norm}
+    clamp: ${vars.clamp}
+    clamp_mode: ${vars.clamp_mode}
+    max_num_timesteps: ${vars.max_num_timesteps}
+    collators:
+      - kind: cfd_baseline_collator
+  train_rollout:
+    kind: cfd_dataset
+    version: ${vars.version}
+    split: train
+    num_input_timesteps: .inf
+    grid_resolution: ${vars.grid_resolution}
+    num_input_points: ${vars.rollout_num_input_points}
+    standardize_query_pos: true
+    norm: ${vars.norm}
+    clamp: ${vars.clamp}
+    clamp_mode: ${vars.clamp_mode}
+    max_num_sequences: 32
+    max_num_timesteps: ${vars.max_num_timesteps}
+    collators:
+      - kind: cfd_baseline_collator
+  test_rollout:
+    kind: cfd_dataset
+    version: ${vars.version}
+    split: test
+    num_input_timesteps: .inf
+    grid_resolution: ${vars.grid_resolution}
+    num_input_points: ${vars.rollout_num_input_points}
+    standardize_query_pos: true
+    norm: ${vars.norm}
+    clamp: ${vars.clamp}
+    clamp_mode: ${vars.clamp_mode}
+    max_num_sequences: 32
+    max_num_timesteps: ${vars.max_num_timesteps}
+    collators:
+      - kind: cfd_baseline_collator
+
+model:
+  kind: cfd_baseline_model
+  conditioner:
+    kind: conditioners.timestep_velocity_conditioner_pdearena
+    kwargs: ${select:dim128:${yaml:models/dim}}
+    optim: ${vars.optim}
+  encoder:
+    kind: encoders.cfd_interpolate
+    kwargs: ${select:dim64:${yaml:models/dim}}
+    optim: ${vars.optim}
+  latent:
+    kind: latent.unet_pdearena_model
+    kwargs: ${select:dim13:${yaml:models/dim}}
+    optim: ${vars.optim}
+  decoder:
+    kind: decoders.cfd_interpolate
+    clamp: ${vars.clamp}
+    clamp_mode: ${vars.clamp_mode}
+    kwargs: ${select:dim64:${yaml:models/dim}}
+    optim: ${vars.optim}
+
+trainer:
+  kind: cfd_baseline_trainer
+  precision: float32
+  max_epochs: ${vars.epochs}
+  effective_batch_size: ${vars.batch_size}
+  max_batch_size: ${vars.max_batch_size}
+  radius_graph_r: ${vars.radius_graph_r}
+  radius_graph_max_num_neighbors: ${vars.radius_graph_max_num_neighbors}
+  loss_function:
+    kind: elementwise_loss
+    loss_function:
+      kind: mse_loss
+  early_stopper:
+    kind: metric_early_stopper
+    every_n_epochs: 1
+    tolerance: 10
+    metric_key: loss/online/x_hat/E1
+  log_every_n_epochs: 1
+  callbacks:
+    # best checkpoint
+    - kind: best_checkpoint_callback
+      every_n_epochs: 1
+      metric_key: loss/online/x_hat/E1
+    # checkpoints for resuming
+    - kind: checkpoint_callback
+      every_n_epochs: 10
+      save_weights: false
+      save_latest_weights: true
+      save_latest_optim: true
+    # checkpoints for resuming
+    - kind: checkpoint_callback
+      every_n_epochs: 10
+      save_weights: true
+      save_optim: true
+    # train rollout
+    - kind: offline_correlation_time_callback
+      every_n_epochs: 10
+      dataset_key: train_rollout
+    # test rollout
+    - kind: offline_correlation_time_callback
+      every_n_epochs: 10
+      dataset_key: test_rollout

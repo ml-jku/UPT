@@ -1,0 +1,14 @@
+debug:
+  dim: 16
+
+dim64:
+  dim: 64
+
+dim86:
+  dim: 86
+
+dim96:
+  dim: 96
+
+dim128:
+  dim: 128

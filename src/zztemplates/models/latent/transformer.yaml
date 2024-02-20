@@ -1,0 +1,119 @@
+debug:
+  dim: 16
+  num_attn_heads: 2
+  depth: 1
+
+dim128:
+  dim: 128
+  num_attn_heads: 2
+
+dim192:
+  dim: 192
+  num_attn_heads: 3
+
+dim192depth12:
+  dim: 192
+  num_attn_heads: 3
+  depth: 12
+
+dim256:
+  dim: 256
+  num_attn_heads: 4
+
+dim256depth12:
+  dim: 256
+  num_attn_heads: 4
+  depth: 12
+
+# 5.5M
+tiny: # vit_tiny_patch16_224
+  dim: 192
+  num_attn_heads: 3
+  depth: 12
+
+dim384:
+  dim: 384
+  num_attn_heads: 6
+
+dim384depth12:
+  dim: 384
+  num_attn_heads: 6
+  depth: 12
+
+dim512depth12:
+  dim: 384
+  num_attn_heads: 8
+  depth: 12
+
+dim512:
+  dim: 384
+  num_attn_heads: 8
+
+# 21.5M
+small: # vit_small_patch16_224
+  dim: 384
+  num_attn_heads: 6
+  depth: 12
+
+dim768depth12:
+  dim: 768
+  num_attn_heads: 12
+  depth: 12
+
+dim768:
+  dim: 768
+  num_attn_heads: 12
+
+# 85.6M
+base:
+  dim: 768
+  num_attn_heads: 12
+  depth: 12
+
+dim1024:
+  dim: 1024
+  num_attn_heads: 16
+
+dim1024depth12:
+  dim: 1024
+  num_attn_heads: 16
+  depth: 12
+
+dim1280:
+  dim: 1280
+  num_attn_heads: 16
+
+dim1280depth12:
+  dim: 1280
+  num_attn_heads: 16
+  depth: 12
+
+dim1536:
+  dim: 1536
+  num_attn_heads: 16
+
+dim1536depth12:
+  dim: 1536
+  num_attn_heads: 16
+  depth: 12
+
+dim2048:
+  dim: 2048
+  num_attn_heads: 16
+
+dim2048depth12:
+  dim: 2048
+  num_attn_heads: 16
+  depth: 12
+
+# 303M
+large:
+  dim: 1024
+  num_attn_heads: 16
+  depth: 24
+
+# 630M
+huge:
+  dim: 1280
+  num_attn_heads: 16
+  depth: 32

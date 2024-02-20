@@ -1,0 +1,80 @@
+debug:
+  dim: 16
+
+dim13:
+  dim: 13
+
+dim21:
+  dim: 21
+
+dim24:
+  dim: 24
+
+dim32:
+  dim: 32
+
+dim36:
+  dim: 36
+
+dim40:
+  dim: 40
+
+dim42:
+  dim: 42
+
+dim48:
+  dim: 48
+
+dim50:
+  dim: 50
+
+dim64:
+  dim: 64
+
+dim76:
+  dim: 76
+
+dim82:
+  dim: 82
+
+dim84:
+  dim: 84
+
+dim96:
+  dim: 96
+
+dim100:
+  dim: 100
+
+dim128:
+  dim: 128
+
+dim192:
+  dim: 192
+
+dim256:
+  dim: 256
+
+dim384:
+  dim: 384
+
+dim512:
+  dim: 512
+
+dim768:
+  dim: 768
+
+dim1024:
+  dim: 1024
+
+dim1280:
+  dim: 1280
+
+dim1536:
+  dim: 1536
+
+dim1792:
+  dim: 1792
+
+dim2048:
+  dim: 2048

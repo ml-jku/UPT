@@ -1,0 +1,29 @@
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.9
+  - pytorch
+  - torchvision
+  - torch_geometric
+  - einops
+  - torchmetrics
+  - wandb
+  - pyyaml
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - meshio
+  - pytest
+  - h5py
+  - wget
+  - pip
+  - pip:
+      - kappabenchmark
+      - kappaconfig
+      - kappadata
+      - kappamodules
+      - kappaprofiler
+      - kappautils
+      - neuraloperator
+      - torch_harmonics # requirement for neuraloperator but not in dependency tree of neuraloperator

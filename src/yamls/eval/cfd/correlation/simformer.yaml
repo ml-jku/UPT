@@ -1,0 +1,160 @@
+wandb: cvsim
+name: ???
+stage_name: rollout-correlation
+vars:
+  stage_id: ???
+  batch_size: 64
+  version: ???
+  num_input_points: ???
+  num_input_points_ratio: ???
+  radius_graph_r: ???
+  radius_graph_max_num_neighbors: ???
+  num_input_timesteps: ???
+  checkpoint: ???
+  mode: ???
+  clamp: ???
+  clamp_mode: ???
+  norm: ???
+  num_supernodes: ???
+  max_num_timesteps: ???
+
+datasets:
+  train:
+    kind: cfd_dataset
+    version: ${vars.version}
+    split: train
+    num_input_points: ${vars.num_input_points}
+    num_input_points_ratio: ${vars.num_input_points_ratio}
+    num_input_timesteps: ${vars.num_input_timesteps}
+    clamp: ${vars.clamp}
+    clamp_mode: ${vars.clamp_mode}
+    norm: ${vars.norm}
+    max_num_timesteps: ${vars.max_num_timesteps}
+    collators:
+      - kind: cfd_simformer_collator
+        num_supernodes: ${vars.num_supernodes}
+  train_rollout:
+    kind: cfd_dataset
+    version: ${vars.version}
+    split: train
+    num_input_points: ${vars.num_input_points}
+    num_input_points_ratio: ${vars.num_input_points_ratio}
+    num_input_timesteps: .inf
+    clamp: ${vars.clamp}
+    clamp_mode: ${vars.clamp_mode}
+    norm: ${vars.norm}
+    max_num_sequences: 500
+    max_num_timesteps: ${vars.max_num_timesteps}
+    collators:
+      - kind: cfd_simformer_collator
+        num_supernodes: ${vars.num_supernodes}
+  test_rollout:
+    kind: cfd_dataset
+    version: ${vars.version}
+    split: test
+    num_input_points: ${vars.num_input_points}
+    num_input_points_ratio: ${vars.num_input_points_ratio}
+    num_input_timesteps: .inf
+    clamp: ${vars.clamp}
+    clamp_mode: ${vars.clamp_mode}
+    norm: ${vars.norm}
+    max_num_timesteps: ${vars.max_num_timesteps}
+    collators:
+      - kind: cfd_simformer_collator
+        num_supernodes: ${vars.num_supernodes}
+  valid_rollout:
+    kind: cfd_dataset
+    version: ${vars.version}
+    split: valid
+    num_input_points: ${vars.num_input_points}
+    num_input_points_ratio: ${vars.num_input_points_ratio}
+    num_input_timesteps: .inf
+    clamp: ${vars.clamp}
+    clamp_mode: ${vars.clamp_mode}
+    norm: ${vars.norm}
+    max_num_timesteps: ${vars.max_num_timesteps}
+    collators:
+      - kind: cfd_simformer_collator
+        num_supernodes: ${vars.num_supernodes}
+
+model:
+  kind: cfd_simformer_model
+  conditioner:
+#    kind: conditioners.timestep_velocity_conditioner
+#    kwargs: ${select:debug:${yaml:models/dim}}
+    is_frozen: true
+    initializers:
+      - kind: previous_run_initializer
+        stage_id: ${vars.stage_id}
+        stage_name: stage1
+        model_name: cfd_simformer_model.conditioner
+        checkpoint: ${vars.checkpoint}
+        use_checkpoint_kwargs: true
+  encoder:
+#    kind: encoders.cfd_gnn_pool_transformer_perceiver
+#    num_supernodes: 1024
+#    num_latent_tokens: 128
+#    kwargs: ${select:debug:${yaml:models/encoders/gnn_pool_transformer_perceiver}}
+    is_frozen: true
+    initializers:
+      - kind: previous_run_initializer
+        stage_id: ${vars.stage_id}
+        stage_name: stage1
+        model_name: cfd_simformer_model.encoder
+        checkpoint: ${vars.checkpoint}
+        use_checkpoint_kwargs: true
+  latent:
+#    kind: latent.transformer_model
+#    kwargs: ${select:debug:${yaml:models/latent/transformer}}
+    is_frozen: true
+    initializers:
+      - kind: previous_run_initializer
+        stage_id: ${vars.stage_id}
+        stage_name: stage1
+        model_name: cfd_simformer_model.latent
+        checkpoint: ${vars.checkpoint}
+        use_checkpoint_kwargs: true
+  decoder:
+#    kind: decoders.cfd_perceiver
+#    kwargs: ${select:base:${yaml:models/decoders/perceiver}}
+    is_frozen: true
+    initializers:
+      - kind: previous_run_initializer
+        stage_id: ${vars.stage_id}
+        stage_name: stage1
+        model_name: cfd_simformer_model.decoder
+        checkpoint: ${vars.checkpoint}
+        use_checkpoint_kwargs: true
+
+trainer:
+  kind: cfd_simformer_trainer
+  precision: bfloat16
+  backup_precision: float16
+  max_epochs: 0
+  effective_batch_size: ${vars.batch_size}
+  radius_graph_r: ${vars.radius_graph_r}
+  radius_graph_max_num_neighbors: ${vars.radius_graph_max_num_neighbors}
+  loss_function:
+    kind: elementwise_loss
+    loss_function:
+      kind: mse_loss
+  log_every_n_epochs: 1
+  callbacks:
+    # rollout test
+    - kind: offline_correlation_time_callback
+      every_n_epochs: 1
+      dataset_key: test_rollout
+      rollout_kwargs:
+        mode: ${vars.mode}
+    # rollout valid
+    - kind: offline_correlation_time_callback
+      every_n_epochs: 1
+      dataset_key: valid_rollout
+      rollout_kwargs:
+        mode: ${vars.mode}
+    # rollout train
+    - kind: offline_correlation_time_callback
+      every_n_epochs: 1
+      dataset_key: train_rollout
+      rollout_kwargs:
+        mode: ${vars.mode}

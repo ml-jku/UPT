@@ -1,0 +1,17 @@
+debug:
+  dim: 16
+
+tiny:
+  dim: 192
+
+small:
+  dim: 384
+
+base:
+  dim: 768
+
+large:
+  dim: 1024
+
+huge:
+  dim: 1280

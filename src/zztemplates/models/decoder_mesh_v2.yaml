@@ -1,0 +1,34 @@
+debug:
+  last_perc_dim: 4
+  last_perc_num_attn_heads: 1
+  dim: 16
+  num_attn_heads: 1
+  depth: 1
+
+tiny:
+  last_perc_dim: 96
+  last_perc_num_attn_heads: 3
+  dim: 192
+  num_attn_heads: 3
+  depth: 12
+
+small:
+  last_perc_dim: 192
+  last_perc_num_attn_heads: 3
+  dim: 384
+  num_attn_heads: 6
+  depth: 12
+
+base:
+  last_perc_dim: 384
+  last_perc_num_attn_heads: 6
+  dim: 768
+  num_attn_heads: 12
+  depth: 12
+
+large:
+  last_perc_dim: 512
+  last_perc_num_attn_heads: 8
+  dim: 1024
+  num_attn_heads: 16
+  depth: 24

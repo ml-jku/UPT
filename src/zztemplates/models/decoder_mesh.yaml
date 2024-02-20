@@ -1,0 +1,48 @@
+debug:
+  perc_dim: 4
+  perc_num_attn_heads: 1
+  dim: 16
+  num_attn_heads: 1
+  depth: 1
+
+tiny_micro:
+  perc_dim: 96
+  perc_num_attn_heads: 3
+  dim: 192
+  num_attn_heads: 3
+  depth: 12
+
+tiny:
+  perc_dim: 192
+  perc_num_attn_heads: 3
+  dim: 192
+  num_attn_heads: 3
+  depth: 12
+
+small_tiny:
+  perc_dim: 192
+  perc_num_attn_heads: 3
+  dim: 384
+  num_attn_heads: 6
+  depth: 12
+
+base_tiny:
+  perc_dim: 192
+  perc_num_attn_heads: 3
+  dim: 768
+  num_attn_heads: 12
+  depth: 12
+
+base_small:
+  perc_dim: 384
+  perc_num_attn_heads: 3
+  dim: 768
+  num_attn_heads: 12
+  depth: 12
+
+base:
+  perc_dim: 768
+  perc_num_attn_heads: 12
+  dim: 768
+  num_attn_heads: 12
+  depth: 12

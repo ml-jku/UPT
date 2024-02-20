@@ -1,0 +1,17 @@
+debug:
+  num_stages: 2
+  dim: [ 8, 16, 16, 32 ]
+  num_attn_heads: [ 2, 2, 2, 2]
+  depth: [ 1, 1 ]
+
+tiny_small_base:
+  num_stages: 2
+  dim: [ 192, 384, 384, 768 ]
+  num_attn_heads: [ 3, 3, 3, 12]
+  depth: [ 6, 6 ]
+
+base:
+  num_stages: 2
+  dim: 768
+  num_attn_heads: 12
+  depth: [ 6, 6 ]

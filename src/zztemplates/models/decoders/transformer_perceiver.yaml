@@ -1,0 +1,64 @@
+debug:
+  dim: 16
+  depth: 1
+  num_attn_heads: 2
+
+dim128to64:
+  dim: 128
+  perc_dim: 64
+  num_attn_heads: 2
+  perc_num_attn_heads: 2
+
+dim192to96:
+  dim: 192
+  perc_dim: 96
+  num_attn_heads: 3
+  perc_num_attn_heads: 2
+
+dim192to64:
+  dim: 192
+  perc_dim: 64
+  num_attn_heads: 3
+  perc_num_attn_heads: 2
+
+dim192:
+  dim: 192
+  num_attn_heads: 3
+
+dim384to128:
+  dim: 384
+  perc_dim: 128
+  num_attn_heads: 6
+  perc_num_attn_heads: 2
+
+dim384to192:
+  dim: 384
+  perc_dim: 192
+  num_attn_heads: 6
+  perc_num_attn_heads: 3
+
+dim384:
+  dim: 384
+  num_attn_heads: 6
+
+dim768to192:
+  dim: 768
+  perc_dim: 192
+  num_attn_heads: 12
+  perc_num_attn_heads: 3
+
+dim768to384:
+  dim: 768
+  perc_dim: 384
+  num_attn_heads: 12
+  perc_num_attn_heads: 6
+
+dim768:
+  dim: 768
+  num_attn_heads: 12
+
+dim1024to512:
+  dim: 1024
+  perc_dim: 512
+  num_attn_heads: 16
+  perc_num_attn_heads: 8

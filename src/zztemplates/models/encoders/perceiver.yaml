@@ -1,0 +1,43 @@
+debug:
+  dim: 16
+  num_attn_heads: 2
+
+dim192:
+  dim: 192
+  num_attn_heads: 3
+
+tiny:
+  dim: 192
+  num_attn_heads: 3
+
+dim384:
+  dim: 384
+  num_attn_heads: 6
+
+small:
+  dim: 384
+  num_attn_heads: 6
+
+dim768:
+  dim: 768
+  num_attn_heads: 12
+
+base:
+  dim: 768
+  num_attn_heads: 12
+
+dim1024:
+  dim: 1024
+  num_attn_heads: 16
+
+large:
+  dim: 1024
+  num_attn_heads: 16
+
+dim1280:
+  dim: 1280
+  num_attn_heads: 16
+
+huge:
+  dim: 1280
+  num_attn_heads: 16

@@ -1,0 +1,42 @@
+debug:
+  dim: 16
+
+dim32:
+  dim: 32
+
+dim64:
+  dim: 64
+
+dim96:
+  dim: 96
+
+dim128:
+  dim: 128
+
+dim192:
+  dim: 192
+
+dim256:
+  dim: 256
+
+dim384:
+  dim: 384
+
+dim512:
+  dim: 512
+
+dim768:
+  dim: 768
+
+dim1024:
+  dim: 1024
+
+dim1280:
+  dim: 1280
+
+dim1536:
+  dim: 1280
+
+# 481K params
+original:
+  dim: [ 640, 512, 256, 86 ]

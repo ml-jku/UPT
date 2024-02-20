@@ -1,0 +1,14 @@
+# general
+default_account: <PROJECT>
+default_qos: <QOS>
+
+# working/log directories
+chdir: <WORK_DIR>
+output: <LOG_DIR>/%j.out
+
+# environment setup
+master_port: 55555
+env_name: <ENV_NAME>
+
+# LD_LIBRARY_PATH
+ld_lib_path: <USER_DIR>/.conda/envs/<ENV_NAME>/lib

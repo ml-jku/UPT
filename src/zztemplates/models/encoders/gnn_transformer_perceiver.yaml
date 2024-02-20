@@ -1,0 +1,23 @@
+debug:
+  gnn_dim: 8
+  enc_dim: 8
+  perc_dim: 8
+  enc_depth: 1
+  enc_num_attn_heads: 2
+  perc_num_attn_heads: 2
+
+small_small_base:
+  gnn_dim: 384
+  enc_dim: 384
+  perc_dim: 768
+  enc_depth: 12
+  enc_num_attn_heads: 3
+  perc_num_attn_heads: 12
+
+base:
+  gnn_dim: 768
+  enc_dim: 768
+  perc_dim: 768
+  enc_depth: 12
+  enc_num_attn_heads: 12
+  perc_num_attn_heads: 12

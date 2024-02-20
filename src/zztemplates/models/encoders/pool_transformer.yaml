@@ -1,0 +1,84 @@
+debug:
+  gnn_dim: 16
+  enc_dim: 16
+  enc_depth: 1
+  enc_num_attn_heads: 2
+
+gnn16_enc192depth12:
+  gnn_dim: 16
+  enc_dim: 192
+  enc_depth: 12
+  enc_num_attn_heads: 3
+
+gnn32_enc192depth12:
+  gnn_dim: 32
+  enc_dim: 192
+  enc_depth: 12
+  enc_num_attn_heads: 3
+
+gnn32_enc384depth12:
+  gnn_dim: 32
+  enc_dim: 384
+  enc_depth: 12
+  enc_num_attn_heads: 6
+
+gnn64_enc192depth12:
+  gnn_dim: 64
+  enc_dim: 192
+  enc_depth: 12
+  enc_num_attn_heads: 3
+
+gnn64_enc384depth12:
+  gnn_dim: 64
+  enc_dim: 384
+  enc_num_attn_heads: 6
+
+gnn64_enc192:
+  gnn_dim: 64
+  enc_dim: 192
+  enc_num_attn_heads: 3
+
+dim192:
+  gnn_dim: 192
+  enc_dim: 192
+  enc_num_attn_heads: 3
+
+gnn192_enc384:
+  gnn_dim: 192
+  enc_dim: 384
+  enc_num_attn_heads: 6
+
+dim256:
+  gnn_dim: 256
+  enc_dim: 256
+  enc_num_attn_heads: 4
+
+gnn128_enc384:
+  gnn_dim: 128
+  enc_dim: 384
+  enc_num_attn_heads: 6
+
+dim384:
+  gnn_dim: 384
+  enc_dim: 384
+  enc_num_attn_heads: 6
+
+dim512:
+  gnn_dim: 512
+  enc_dim: 512
+  enc_num_attn_heads: 8
+
+gnn192_enc768:
+  gnn_dim: 192
+  enc_dim: 768
+  enc_num_attn_heads: 12
+
+dim768:
+  gnn_dim: 768
+  enc_dim: 768
+  enc_num_attn_heads: 12
+
+dim1024:
+  gnn_dim: 1024
+  enc_dim: 1024
+  enc_num_attn_heads: 16

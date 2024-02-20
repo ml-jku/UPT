@@ -1,0 +1,29 @@
+debug:
+  dim: 16
+  num_attn_heads: 2
+  depth: 1
+
+dim32depth4:
+  dim: 32
+  num_attn_heads: 3
+  depth: 4
+
+dim48depth4:
+  dim: 48
+  num_attn_heads: 3
+  depth: 4
+
+dim64depth4:
+  dim: 64
+  num_attn_heads: 8
+  depth: 4
+
+dim96depth4:
+  dim: 96
+  num_attn_heads: 8
+  depth: 4
+
+dim128depth4:
+  dim: 128
+  num_attn_heads: 8
+  depth: 4

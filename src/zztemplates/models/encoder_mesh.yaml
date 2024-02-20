@@ -1,0 +1,35 @@
+debug:
+  gnn_dim: 4
+  dim: 16
+  num_attn_heads: 2
+  depth: 1
+
+tiny_micro:
+  gnn_dim: 96
+  dim: 192
+  num_attn_heads: 3
+  depth: 12
+
+small_tiny:
+  gnn_dim: 192
+  dim: 384
+  num_attn_heads: 6
+  depth: 12
+
+base_micro:
+  gnn_dim: 96
+  dim: 768
+  num_attn_heads: 12
+  depth: 12
+
+base_tiny:
+  gnn_dim: 192
+  dim: 768
+  num_attn_heads: 12
+  depth: 12
+
+base_small:
+  gnn_dim: 384
+  dim: 768
+  num_attn_heads: 12
+  depth: 12

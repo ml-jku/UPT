@@ -1,0 +1,160 @@
+debug:
+  gnn_dim: 16
+  enc_dim: 16
+  perc_dim: 16
+  enc_num_attn_heads: 2
+  perc_num_attn_heads: 2
+
+gnn16_enc192depth12_perc384:
+  gnn_dim: 16
+  enc_dim: 192
+  perc_dim: 384
+  enc_num_attn_heads: 3
+  perc_num_attn_heads: 6
+
+gnn16_enc192depth12_perc768:
+  gnn_dim: 16
+  enc_dim: 192
+  perc_dim: 768
+  enc_num_attn_heads: 3
+  perc_num_attn_heads: 12
+
+gnn32_enc192depth12_perc384:
+  gnn_dim: 32
+  enc_dim: 192
+  perc_dim: 384
+  enc_num_attn_heads: 3
+  perc_num_attn_heads: 6
+
+gnn32_enc384depth12_perc768:
+  gnn_dim: 32
+  enc_dim: 384
+  perc_dim: 768
+  enc_num_attn_heads: 6
+  perc_num_attn_heads: 12
+
+gnn64_enc192depth12_perc384:
+  gnn_dim: 64
+  enc_dim: 192
+  perc_dim: 384
+  enc_num_attn_heads: 3
+  perc_num_attn_heads: 12
+
+gnn64_enc384depth12_perc768:
+  gnn_dim: 64
+  enc_dim: 384
+  perc_dim: 768
+  enc_num_attn_heads: 6
+  perc_num_attn_heads: 12
+
+gnn64dim192:
+  gnn_dim: 64
+  enc_dim: 192
+  perc_dim: 192
+  enc_num_attn_heads: 3
+  perc_num_attn_heads: 3
+
+dim192:
+  gnn_dim: 192
+  enc_dim: 192
+  perc_dim: 192
+  enc_num_attn_heads: 3
+  perc_num_attn_heads: 3
+
+dim256:
+  gnn_dim: 256
+  enc_dim: 256
+  perc_dim: 256
+  enc_num_attn_heads: 4
+  perc_num_attn_heads: 4
+
+dim384:
+  gnn_dim: 384
+  enc_dim: 384
+  perc_dim: 384
+  enc_num_attn_heads: 6
+  perc_num_attn_heads: 6
+
+dim512:
+  gnn_dim: 512
+  enc_dim: 512
+  perc_dim: 512
+  enc_num_attn_heads: 8
+  perc_num_attn_heads: 8
+
+gnn384_dim768:
+  gnn_dim: 384
+  enc_dim: 384
+  perc_dim: 768
+  enc_num_attn_heads: 6
+  perc_num_attn_heads: 12
+
+gnn192_dim384:
+  gnn_dim: 192
+  enc_dim: 384
+  perc_dim: 384
+  enc_num_attn_heads: 12
+  perc_num_attn_heads: 12
+
+gnn192_dim768:
+  gnn_dim: 192
+  enc_dim: 768
+  perc_dim: 768
+  enc_num_attn_heads: 12
+  perc_num_attn_heads: 12
+
+dim64to128:
+  gnn_dim: 64
+  enc_dim: 64
+  perc_dim: 128
+  enc_num_attn_heads: 2
+  perc_num_attn_heads: 2
+
+dim96to192:
+  gnn_dim: 96
+  enc_dim: 96
+  perc_dim: 192
+  enc_num_attn_heads: 2
+  perc_num_attn_heads: 3
+
+dim192to384:
+  gnn_dim: 192
+  enc_dim: 192
+  perc_dim: 384
+  enc_num_attn_heads: 3
+  perc_num_attn_heads: 6
+
+dim192to768:
+  gnn_dim: 192
+  enc_dim: 192
+  perc_dim: 768
+  enc_num_attn_heads: 3
+  perc_num_attn_heads: 12
+
+dim384to768:
+  gnn_dim: 384
+  enc_dim: 384
+  perc_dim: 768
+  enc_num_attn_heads: 6
+  perc_num_attn_heads: 12
+
+dim768:
+  gnn_dim: 768
+  enc_dim: 768
+  perc_dim: 768
+  enc_num_attn_heads: 12
+  perc_num_attn_heads: 12
+
+dim512to1024:
+  gnn_dim: 512
+  enc_dim: 512
+  perc_dim: 1024
+  enc_num_attn_heads: 8
+  perc_num_attn_heads: 16
+
+dim1024:
+  gnn_dim: 1024
+  enc_dim: 1024
+  perc_dim: 1024
+  enc_num_attn_heads: 16
+  perc_num_attn_heads: 16

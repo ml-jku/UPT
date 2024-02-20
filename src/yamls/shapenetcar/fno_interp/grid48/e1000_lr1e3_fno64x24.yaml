@@ -1,0 +1,65 @@
+wandb: cvsim
+name: snc-all-sdf-e1000-lr1e3-interplated-grid48-fno64x24
+stage_name: stage1
+vars:
+  lr: 1.0e-3
+  batch_size: 32
+  max_batch_size: 4
+  epochs: 1000
+
+  grid_resolution: 48
+
+  optim:
+    kind: adamw
+    lr: ${vars.lr}
+    weight_decay: 1.0e-4
+    schedule:
+      template: ${yaml:schedules/wupcos_epoch}
+      template.vars.end_epoch: 50
+
+datasets:
+  train:
+    kind: shapenet_car
+    split: train
+    grid_resolution: ${vars.grid_resolution}
+    standardize_query_pos: true
+    collators:
+      - kind: rans_interpolated_collator
+  test:
+    kind: shapenet_car
+    split: test
+    grid_resolution: ${vars.grid_resolution}
+    standardize_query_pos: true
+    collators:
+      - kind: rans_interpolated_collator
+
+model:
+  kind: rans_interpolated_model
+  latent:
+    kind: latent.fno_gino_model
+    modes: 24
+    kwargs: ${select:dim64:${yaml:models/latent/fno}}
+    optim: ${vars.optim}
+  decoder:
+    kind: decoders.rans_interpolated
+    optim: ${vars.optim}
+
+trainer:
+  kind: rans_interpolated_trainer
+  # encountered NaN loss
+  precision: float32
+  max_epochs: ${vars.epochs}
+  effective_batch_size: ${vars.batch_size}
+  max_batch_size: ${vars.max_batch_size}
+  loss_function:
+    kind: elementwise_loss
+    loss_function:
+      kind: mse_loss
+  log_every_n_epochs: 1
+  callbacks:
+    - kind: offline_loss_callback
+      every_n_epochs: 1
+      dataset_key: test
+    - kind: best_checkpoint_callback
+      every_n_epochs: 1
+      metric_key: loss/test/total

@@ -1,0 +1,11 @@
+vars:
+  end_epoch: ???
+
+schedule:
+  - schedule:
+      kind: linear_increasing_schedule
+      exclude_first: true
+      exclude_last: true
+    end_epoch: ${vars.end_epoch}
+  - schedule:
+      kind: inverse_sqrt_decreasing_schedule

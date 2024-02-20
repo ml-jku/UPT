@@ -1,0 +1,118 @@
+wandb: cvsim
+name: tgv3d
+stage_name: stage1
+vars:
+  lr: 1.0e-3
+  batch_size: 128
+  max_batch_size: 64
+  epochs: 50
+
+  dataset:
+    kind: lagrangian_dataset
+    name: tgv3d
+    n_input_timesteps: 3
+    n_pushforward_timesteps: 9
+    graph_mode: radius_graph_with_supernodes
+    radius_graph_r: 0.6
+    radius_graph_max_num_neighbors: 4
+    n_supernodes: 512
+
+  optim:
+    kind: adamw
+    lr: ${vars.lr}
+    weight_decay: 0.05
+    schedule:
+      template: ${yaml:schedules/wupcos_epoch}
+      template.vars.end_epoch: 10
+
+datasets:
+  train:
+    kind: ${vars.dataset.kind}
+    name: ${vars.dataset.name}
+    split: train
+    n_input_timesteps: ${vars.dataset.n_input_timesteps}
+    n_pushforward_timesteps: ${vars.dataset.n_pushforward_timesteps}
+    graph_mode: ${vars.dataset.graph_mode}
+    radius_graph_r: ${vars.dataset.radius_graph_r}
+    radius_graph_max_num_neighbors: ${vars.dataset.radius_graph_max_num_neighbors}
+    n_supernodes: ${vars.dataset.n_supernodes}
+    num_points_range: [ 4000, 8000 ]
+    collators:
+      - kind: lagrangian_simformer_collator
+  valid_rollout:
+    kind: ${vars.dataset.kind}
+    name: ${vars.dataset.name}
+    split: valid
+    test_mode: full_traj
+    n_input_timesteps: ${vars.dataset.n_input_timesteps}
+    graph_mode: ${vars.dataset.graph_mode}
+    radius_graph_r: ${vars.dataset.radius_graph_r}
+    radius_graph_max_num_neighbors: ${vars.dataset.radius_graph_max_num_neighbors}
+    n_supernodes: ${vars.dataset.n_supernodes}
+    seed: 2702
+    collators:
+      - kind: lagrangian_simformer_collator
+  test_rollout:
+    kind: ${vars.dataset.kind}
+    name: ${vars.dataset.name}
+    split: test
+    test_mode: full_traj
+    n_input_timesteps: ${vars.dataset.n_input_timesteps}
+    graph_mode: ${vars.dataset.graph_mode}
+    radius_graph_r: ${vars.dataset.radius_graph_r}
+    radius_graph_max_num_neighbors: ${vars.dataset.radius_graph_max_num_neighbors}
+    n_supernodes: ${vars.dataset.n_supernodes}
+    seed: 2702
+    collators:
+      - kind: lagrangian_simformer_collator
+
+model:
+  kind: lagrangian_simformer_model
+  conditioner:
+    kind: conditioners.timestep_conditioner_pdearena
+    kwargs: ${select:tiny:${yaml:models/timestep_embed}}
+    optim: ${vars.optim}
+  encoder:
+    kind: encoders.lagrangian_pool_transformer_perceiver
+    num_latent_tokens: 128
+    enc_depth: 4
+    kwargs: ${select:dim96to192:${yaml:models/encoders/pool_transformer_perceiver}}
+    optim: ${vars.optim}
+  latent:
+    kind: latent.transformer_model
+    depth: 4
+    kwargs: ${select:dim192:${yaml:models/latent/transformer}}
+    optim: ${vars.optim}
+  decoder:
+    kind: decoders.lagrangian_perceiver
+    kwargs: ${select:dim192:${yaml:models/decoders/perceiver}}
+    optim: ${vars.optim}
+
+trainer:
+  kind: lagrangian_large_t_simformer_trainer
+  precision: bfloat16
+  backup_precision: float16
+  max_epochs: ${vars.epochs}
+  effective_batch_size: ${vars.batch_size}
+  max_batch_size: ${vars.max_batch_size}
+  forward_kwargs:
+    reconstruct_prev_target: true
+    encode_target: true
+  loss_function:
+    kind: elementwise_loss
+    loss_function:
+      kind: mse_loss
+  log_every_n_epochs: 1
+  callbacks:
+    - kind: offline_lagrangian_large_t_rollout_mesh_loss_callback
+      every_n_epochs: 1
+      dataset_key: test_rollout
+      batch_size: 128
+      rollout_kwargs:
+        save_rollout: true
+    - kind: offline_lagrangian_large_t_rollout_mesh_loss_callback
+      every_n_epochs: 1
+      dataset_key: valid_rollout
+      batch_size: 128
+      rollout_kwargs:
+        save_rollout: false
