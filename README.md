@@ -9,7 +9,7 @@ Instructions to setup the codebase on your own environment are provided in
 [SETUP_DATA](https://github.com/ml-jku/UPT/blob/main/SETUP_DATA.md).
 
 A video to motivate design choices of the codebase and give an overview of the codebase can be
-found [here](https://www.youtube.com/watch?v=80kc3hscTTg).
+found [here](https://youtu.be/80kc3hscTTg).
 
 Configurations to train models can be found [here](https://github.com/ml-jku/UPT/tree/main/src/yamls).
 
