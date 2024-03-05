@@ -1,11 +1,12 @@
 channels:
   - conda-forge
   - pytorch
+  - pyg
 dependencies:
   - python=3.9
   - pytorch
   - torchvision
-  - torch_geometric
+  - pyg
   - einops
   - torchmetrics
   - wandb
