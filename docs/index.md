@@ -1,6 +1,6 @@
 
 
-[[Code](https://github.com/ml-jku/UPT)] [[Paper (arxiv)](https://arxiv.org/abs/2402.12365)] [[BibTeX](https://github.com/ml-jku/UPT#citation)]
+[[Code](https://github.com/ml-jku/UPT)] [[Paper (arxiv)](https://arxiv.org/abs/2402.12365)] [[Codebase Demo Video](https://youtu.be/80kc3hscTTg)] [[BibTeX](https://github.com/ml-jku/UPT#citation)]
 
 
 **U**niversal **P**hysics **T**ransformers (UPTs) are a novel learning paradigm that can model a wide range of 
