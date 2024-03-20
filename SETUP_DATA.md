@@ -1,4 +1,5 @@
 # Shape-Net Car Dataset
+## Download
 ```bash
 mkdir shapenet_car
 cd shapenet_car
@@ -35,11 +36,12 @@ rm -rf ./training_data/param8/c5079a5b8d59220bc3fb0d224baae2a
 
 ## Preprocess
 Preprocess the data by using the folder of the downloaded dataset as SRC_FOLDER.
-`python analysis/data/shapenetcar/preprocess --src <SRC_FOLDER> --dst <DST_FOLDER>`
+`python data/shapenetcar/preprocess.py --src <SRC_FOLDER> --dst <DST_FOLDER>`
 
 # Transient Flow Dataset
 
-We provide resources to generate transient flow simulations that we used in Section 4.2 of our paper in the [data_generation](https://github.com/ml-jku/UPT/tree/main/data_generation) folder. 
+## Generate
+We provide resources to generate transient flow simulations that we used in Section 4.2 of our paper in the [data/transientflow](https://github.com/ml-jku/UPT/tree/main/data/transientflow) folder. 
 
 Software needed:
 
@@ -69,6 +71,18 @@ Parameters:
 - target_dataset_dir: Directory of the generated dataset
 - working_dir: A working directory for OpenFOAM (used during dataset generation)
 
+
+## Preprocess
+
+After generating the OpenFoam cases, we preprocess the data into torch files (with ".th" as filending) for dataloading and to convert it into fp16 precision.
+To do this we use [this](https://github.com/ml-jku/UPT/tree/main/data/transientflow/cfddataset_from_openfoam.py) script.
+
+`python data/transientflow/cfddataset_from_openfoam.py --src <OPENFOAM_OUTPUT_PATH> --dst <POSTPROCESSED_PATH> --num_workers 50`
+
+
+To calculate statistics for normalizing the data execute the `cfddataset_norm.py` script (this will calculate the statistics for normalization as described in Appendix B.4):
+
+`python data/transientflow/cfddataset_norm.py --root <POSTPROCESSED_PATH> --q 0.25 --exclude_last <NUM_VALIDATION_CASES + NUM_TEST_CASES> --num_workers 50`
 
 
 # Lagrangian
