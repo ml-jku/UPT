@@ -20,6 +20,9 @@ If you need a different version for your setup, install it via:
 `pip install torch==2.1.1+cu121 torchvision==0.16.1+cu121 --index-url https://download.pytorch.org/whl/cu121`
 
 
+If there are issues with the dependencies `torch_scatter` or `torch_cluster`, install them via a command similar to this one (adjust the torch and cuda version to your setup):
+
+`pip install torch_scatter torch_cluster -f https://data.pyg.org/whl/torch-2.1.1+cu121.html`
 
 # Configuration
 
