@@ -39,7 +39,36 @@ Preprocess the data by using the folder of the downloaded dataset as SRC_FOLDER.
 
 # Transient Flow Dataset
 
-Coming shortly.
+We provide resources to generate transient flow simulations that we used in Section 4.2 of our paper in the [data_generation](https://github.com/ml-jku/UPT/tree/main/data_generation) folder. 
+
+Software needed:
+
+- Working OpenFOAM (tested with OpenFOAM-v2306)
+- Working MPI (tested with OpenMPI 5.0.0)
+
+Python prerequisites:
+
+- fluidfoam
+- PyFoam
+- gmsh
+- meshio
+- shapely
+- scikit-learn
+
+Usage:
+
+`python generateCase.py n_objects n_cases n_cores empty_case_dir target_dataset_dir working_dir`
+
+Parameters:
+
+
+- n_objects: number of objects in the flow-path
+- n_cases: number of cases to be generated
+- n_cores: number of cores used by MPI
+- empty_case_dir: Directory of an empty OpenFOAM case. An empty case is provided in EmptyCase.zip
+- target_dataset_dir: Directory of the generated dataset
+- working_dir: A working directory for OpenFOAM (used during dataset generation)
+
 
 
 # Lagrangian
