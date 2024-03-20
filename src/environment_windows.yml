@@ -26,4 +26,6 @@ dependencies:
       - kappautils
       - neuraloperator
       - torch_geometric
+      - torch_scatter
+      - torch_cluster
       - torch_harmonics # requirement for neuraloperator but not in dependency tree of neuraloperator
