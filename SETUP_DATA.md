@@ -74,7 +74,7 @@ Parameters:
 
 ## Preprocess
 
-After generating the OpenFoam cases, we preprocess the data into torch files (with ".th" as filending) for dataloading and to convert it into fp16 precision.
+After generating the OpenFoam cases, we preprocess the data into torch files (".th" files) for dataloading and convert it into fp16 precision.
 To do this we use [this](https://github.com/ml-jku/UPT/tree/main/data/transientflow/cfddataset_from_openfoam.py) script.
 
 `python data/transientflow/cfddataset_from_openfoam.py --src <OPENFOAM_OUTPUT_PATH> --dst <POSTPROCESSED_PATH> --num_workers 50`
