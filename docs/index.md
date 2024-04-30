@@ -21,7 +21,7 @@ UPTs can scale up to 4.2M inputs (scale 128), 64x more than a GNN could handle.
 
 
 <p align="center">
-<img width="100%" alt="scaling" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_limits_comparison.svg">
+<img width="80%" alt="scaling" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_limits_comparison.svg">
 </p>
 
 
