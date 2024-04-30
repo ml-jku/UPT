@@ -3,12 +3,25 @@
 [[Code](https://github.com/ml-jku/UPT)] [[Paper (arxiv)](https://arxiv.org/abs/2402.12365)] [[Codebase Demo Video](https://youtu.be/80kc3hscTTg)] [[BibTeX](https://github.com/ml-jku/UPT#citation)]
 
 
-**U**niversal **P**hysics **T**ransformers (UPTs) are a novel learning paradigm that can model a wide range of 
+**U**niversal **P**hysics **T**ransformers (UPTs) are a novel learning paradigm to efficiently train large-scale
+neural operators for a wide range of 
 spatio-temporal problems - both for Lagrangian and Eulerian discretization schemes.
 
 
 <p align="center">
 <img width="100%" alt="schematic" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/schematic.png">
+</p>
+
+
+The current landscape of neural operators mainly focuses on small-scale problems using models that do not scale well
+to large-scale 3D settings. UPTs compress the (potentially) high-dimensional input into a compressed latent 
+space with makes them very scalable. Starting with 32K inputs (scale 1), we scale the number of input points
+and evaluate the memory required to train such a model with batchsize 1. In this qualitative scaling study,
+UPTs can scale up to 4.2M inputs (scale 128), 64x more than a GNN could handle.
+
+
+<p align="center">
+<img width="100%" alt="scaling" src="https://raw.githubusercontent.com/ml-jku/UPT/main/.github/imgs/cfd_limits_comparison.svg">
 </p>
 
 
