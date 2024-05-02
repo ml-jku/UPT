@@ -1,4 +1,4 @@
-# Universal Physics Transformer
+# Universal Physics Transformer (UPT)
 
 [[`Project Page`](https://ml-jku.github.io/UPT)] [[`Paper (arxiv)`](https://arxiv.org/abs/2402.12365)] [[`Codebase Demo Video`](https://youtu.be/80kc3hscTTg)] [[`BibTeX`](https://github.com/ml-jku/UPT#citation)]
 
