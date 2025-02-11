@@ -90,4 +90,3 @@ To calculate statistics for normalizing the data execute the `cfddataset_norm.py
 The datasets will be automatically downloaded into the corresponding directory defined in the `static_config.yaml` (by default `<PATH>/data/lagrangian_dataset`). 
 
 Make sure you have a existing directory for the `lagrangian_dataset` key in your `static_config.yaml` (e.g., like in [static_config_template.yaml](static_config_template.yaml)). You need to create this director if it does not exist already `mkdir <PATH>/data/lagrangian_dataset`.
-No preprocessing needed. Datasets will be downloaded automatically when using a Lagrangian dataset.
