@@ -1,29 +1,30 @@
 vars:
   project: ???
-  data: ${env:CINECA_SCRATCH}/data
-#  data: /leonardo_work/L-AUT_008/data
+  data: <PATH>/data
 
 # the account name is only used to describe from which account the run was started from
 # this is more descriptive than the hostname as it also specifies who ran it
-account_name: leo_<ACCOUNT_NAME>
+account_name: <ACCOUNT_NAME>
 
 # path to store logs/checkpoints
-output_path: ${env:CINECA_SCRATCH}/save
+output_path: <ROOT_PATH>/save
 # path where pretrained models are stored
-# model_path: ${env:CINECA_SCRATCH}/models
+# model_path: <ROOT_PATH>/models
 
 # datasets
 global_dataset_paths:
   mesh_dataset: ${vars.data}/mesh_dataset
   shapenet_car: ${vars.data}/shapenet_car
+  lagrangian_dataset: ${vars.data}/lagrangian_dataset
 
 # OPTIONAL: path to (fast) local storage
 # env:TMPDIR is not set when connecting via ssh to a compute node
-local_dataset_path: ${env:TMPDIR}
+local_dataset_path: <TMPDIR>
 
 data_source_modes:
   mesh_dataset: global
   shapenet_car: global
+  lagrangian_dataset: global
 
 # wandb
 # disabled -> don't use wandb
